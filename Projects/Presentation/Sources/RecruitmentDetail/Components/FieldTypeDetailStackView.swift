@@ -33,6 +33,10 @@ public final class FieldTypeDetailStackView: BaseView {
     }
 
     func setFieldType(_ list: [AreaEntity]) {
+        let subViews = backStackView.arrangedSubviews
+        backStackView.arrangedSubviews.forEach(backStackView.removeArrangedSubview(_:))
+        subViews.forEach { $0.removeFromSuperview() }
+
         list.forEach { data in
             let attachmentView = FieldTypeDetailView().then {
                 $0.configureView(model: data)
